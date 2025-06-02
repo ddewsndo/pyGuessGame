@@ -48,7 +48,7 @@ class guessGame:
             else:
                 print("\n Out of range! Try again.  \n")
                 self.guess()
-        if level == 1 or level == 4:
+        if level == 1 or level == 3:
             if listTwo[0] <= userGuess <= listTwo[-1]:
                 check = True
             else:
