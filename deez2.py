@@ -1,12 +1,12 @@
-#git add .
-#git commit -m "(Your message/what you added or did)"
-#git push
+# git add .
+# git commit -m "(Your message/what you added or did)"
+# git push
 #To save and push code^
-#clear screen only works for windows 
+
+#clear screen only works for windows***
 
 
 #add menu and make it pretty
-#add failsafes for input
 
 
 import random
@@ -40,11 +40,32 @@ class guessGame:
         level += 1
         self.levelStatement()
     def guess(self):
-        userGuess = int(input("Enter Guess!   "))
-        if userGuess == self.correctNum:
-            self.correct()
-        else:
-            self.incorrect(userGuess)
+        check = False
+        userGuess = int(input("Enter Guess: "))
+        if level == 0:
+            if listOne[0] <= userGuess <= listOne[-1]:
+                check = True
+            else:
+                print("\n Out of range! Try again.  \n")
+                self.guess()
+        if level == 1 or level == 4:
+            if listTwo[0] <= userGuess <= listTwo[-1]:
+                check = True
+            else:
+                print("\n Out of range! Try again.  \n")
+                self.guess()
+        if level == 2:
+            if listThree[0] <= userGuess <= listThree[-1]:
+                check = True
+            else:
+                print("\n Out of range! Try again.  \n")
+                self.guess()
+        if check == True:
+            if userGuess == self.correctNum:
+                self.correct()
+            else:
+                self.incorrect(userGuess)
+
     def hint(self, userNum):
         if userNum < self.correctNum:
             print("Too low...")
@@ -52,13 +73,13 @@ class guessGame:
             print("Too high...")
     def levelStatement(self):
         if level == 0:
-            print("\nLevel 1: Numbers range from 1 to 5, inclusive.\n")
+            print("\nLevel 1: Numbers range from 1 to 5, inclusive.\n ")
         elif level == 1:
-            print("\nLevel 2: Numbers range from 1 to 10, inclusive.\n")
+            print("\nLevel 2: Numbers range from 1 to 10, inclusive.\n ")
         elif level == 2:
-            print("\nLevel 3: Numbers range from 1 to 15, inclusive. Good luck!\n") 
+            print("\nLevel 3: Numbers range from 1 to 15, inclusive. Good luck!\n ") 
         elif level == 3:
-            print("\nLast Level! Numbers range from 1 through 10 again, however only one life now instead of three. Choose carefully...\n")
+            print("\nLast Level! Numbers range from 1 through 10 again, however only one life now instead of three. Choose carefully...\n ")
 
 levelOne = guessGame(listOne, random.randint(1, 5), 3)
 levelTwo = guessGame(listTwo, random.randint(1, 10), 3)
